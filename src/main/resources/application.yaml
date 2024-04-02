@@ -1,18 +1,14 @@
 spring:
-  r2dbc:
-    url: r2dbc:h2:file://./test_db
-    #    url: r2dbc:h2:mem:///test_db
-    username: sa
-    password: sa
-    pool:
-      enabled: true
-      validation-query: 'SELECT 1'
-  # 关闭console
-  h2:
-    console:
-      enabled: false
   profiles:
     active: default
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./test_db
+    username: sa
+    password: sa
+  liquibase:
+    enabled: false
+
 # 项目配置定义
 my:
   name: my-site
