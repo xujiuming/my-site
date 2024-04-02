@@ -27,7 +27,7 @@
 <body>
 
 <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-expand-md navbar-expand-xl  navbar-expand-lg navbar-light bg-light" role="navigation">
         <div class="container-fluid">
             <!-- Logo放在左侧 -->
             <a class="navbar-brand" href="/">
