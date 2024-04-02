@@ -1,5 +1,4 @@
-spring:
-  r2dbc:
-    url: r2dbc:h2:file:test_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: root
-    password: 11111111
+#spring:
+#  r2dbc:
+##    url: r2dbc:h2:file:./test_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    url: r2dbc:h2:mem:my_site_db
