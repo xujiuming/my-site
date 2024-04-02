@@ -1,16 +1,19 @@
-#spring:
-#  r2dbc:
-##    url: r2dbc:h2:file:./test_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-#    url: r2dbc:h2:mem:my_site_db
-
 spring:
   r2dbc:
     url: r2dbc:h2:file://./test_db
-#    url: r2dbc:h2:mem:///test_db
+    #    url: r2dbc:h2:mem:///test_db
     username: sa
     password: sa
     pool:
       enabled: true
       validation-query: 'SELECT 1'
-    properties:
-      driver: h2
+  # 关闭console
+  h2:
+    console:
+      enabled: false
+  profiles:
+    active: default
+# 项目配置定义
+my:
+  name: my-site
+  version: 1.0.0
