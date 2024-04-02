@@ -1,0 +1,47 @@
+spring:
+  cache:
+    type: caffeine
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./test_db
+    username: sa
+    password: sa
+    hikari:
+      pool-name: hikari
+      minimum-idle: 20
+      maximum-pool-size: 200
+
+  jpa:
+    #    show-sqel: true
+    hibernate:
+#      naming:
+#        physical-strategy: com.ming.core.orm.MyNamingStrategy
+      #        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      #        physical-naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+      #        physical-strategy: com.ming.core.orm.MyPhysicalNamingStrategy
+      #        physical-naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+      #      create 启动时删数据库中的表，然后创建，退出时不删除数据表
+      #      create-drop 启动时删数据库中的表，然后创建，退出时删除数据表 如果表不存在报错
+      #      update 如果启动时表格式不一致则更新表，原有数据保留
+      #      validate 项目启动表结构进行校验 如果不一致则报错
+      ddl-auto: update
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        temp:
+          # java.sql.SQLFeatureNotSupportedException: 这个 org.postgresql.jdbc.PgConnection.createClob() 方法尚未被实作。
+          use_jdbc_metadata_defaults: false
+    database: h2
+    # 关闭延迟处理
+    open-in-view: false
+  config:
+    activate:
+      on-profile: localProd
+  freemarker:
+    cache: false
+    expose-session-attributes: true
+    expose-request-attributes: true
+    expose-spring-macro-helpers: true
+server:
+  http:
+    port: 8080

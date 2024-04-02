@@ -1,68 +1,9 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ming | 的博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <meta name="author" content="ming"/>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/blog/style.min.css"/>
-    <!-- 可选：引入自定义样式 -->
-    <style>
-        .navbar-brand-img {
-            height: 40px;
-            margin-right: 1rem;
-        }
-
-        .footer-text {
-            color: #6c757d;
-        }
-    </style>
-</head>
+<#include "head.ftlh"/>
 <body>
 
-<header class="header">
-    <nav class="navbar navbar-expand-sm navbar-expand-md navbar-expand-xl  navbar-expand-lg navbar-light bg-light" role="navigation">
-        <div class="container-fluid">
-            <!-- Logo放在左侧 -->
-            <a class="navbar-brand" href="/">
-                <img src="/logo.jpeg" class="navbar-brand-img" alt="Logo">
-            </a>
-            <!-- 导航链接和搜索框放在右侧 -->
-            <div class="ms-auto">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">首页</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">分类</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">标签</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">关于</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">工具</a>
-                    </li>
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-</header>
+<#include "header.ftlh"/>
 
 <div class="lyear-wrapper">
     <section class="mt-5 pb-5">
@@ -239,18 +180,6 @@
         <!-- end container -->
     </section>
 </div>
-
-<!-- 页脚 -->
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="footer-text">备案号：XXXXXXX</span>
-        <span class="footer-text">版权所有 &copy; 2023</span>
-    </div>
-</footer>
-
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/blog/main.min.js"></script>
+<#include "footer.ftlh" />
 </body>
 </html>
