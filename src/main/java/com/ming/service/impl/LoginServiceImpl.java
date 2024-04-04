@@ -25,7 +25,7 @@ public class LoginServiceImpl implements LoginService {
             return JsonResult.error(400, "用户不存在");
         }
         // 简单的md5方式  可以替换更加麻烦的方式
-        if (!userEntity.getPassword().equals(DigestUtils.md5Hex(request.getPassword()))) {
+        if (!userEntity.getPassword().equals(DigestUtils.md5Hex(request.getPassword()).toLowerCase())) {
             return JsonResult.error(400, "密码错误");
         }
         return JsonResult.ok(BeanUtils.copy(userEntity, UserInfoDTO.class));

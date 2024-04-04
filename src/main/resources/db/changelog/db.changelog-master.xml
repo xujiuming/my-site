@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="10" author="ming">
+        <insert tableName="t_user">
+            <column name="id" value="1"/>
+            <column name="username" value="ming"/>
+            <column name="password" value="95c90aa47733b9023c318d9914606339"/>
+            <column name="nick_name" value="Ming"/>
+            <column name="email" value="18120580001@163.com"/>
+            <column name="avatar" value="https://show.xujiuming.com/img/logo.jpeg"/>
+            <column name="quote" value="不做不说"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -11,6 +11,7 @@ spring:
       minimum-idle: 20
       maximum-pool-size: 200
   jpa:
+    generate-ddl: true
     show-sql: true
     hibernate:
       naming:
@@ -29,9 +30,10 @@ spring:
         temp:
           # java.sql.SQLFeatureNotSupportedException: 这个 org.postgresql.jdbc.PgConnection.createClob() 方法尚未被实作。
           use_jdbc_metadata_defaults: false
+        format_sql: true
     database: h2
     # 关闭延迟处理
-#    open-in-view: false
+  #    open-in-view: false
   config:
     activate:
       on-profile: localProd
