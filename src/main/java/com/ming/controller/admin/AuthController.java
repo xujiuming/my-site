@@ -1,7 +1,11 @@
 package com.ming.controller.admin;
 
 import com.ming.core.dto.JsonResult;
+import com.ming.core.dto.UserInfoDTO;
+import com.ming.core.dto.request.LoginAuthRequest;
+import com.ming.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/admin")
 @Controller
+@RequiredArgsConstructor
 public class AuthController {
+    private final LoginService loginService;
 
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
@@ -19,11 +25,8 @@ public class AuthController {
 
     @PostMapping("/login")
     @ResponseBody
-    public JsonResult<String> login1(HttpServletRequest request) {
-        if ("ming".equals(request.getParameter("username"))) {
-            return JsonResult.ok("登录成功");
-        }
-        return JsonResult.error(403, "用户名或密码错误");
+    public JsonResult<UserInfoDTO> loginAuth(LoginAuthRequest request) {
+        return loginService.login(request);
     }
 
     @RequestMapping("/logout")
