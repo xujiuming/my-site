@@ -2,8 +2,8 @@ spring:
   cache:
     type: caffeine
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:./test_db;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_site?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: sa
     password: sa
     hikari:
@@ -31,7 +31,7 @@ spring:
           # java.sql.SQLFeatureNotSupportedException: 这个 org.postgresql.jdbc.PgConnection.createClob() 方法尚未被实作。
           use_jdbc_metadata_defaults: false
         format_sql: true
-    database: h2
+    database: mysql
     # 关闭延迟处理
   #    open-in-view: false
   config:

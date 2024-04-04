@@ -3,7 +3,7 @@
     <module name="my-site" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.ming.Application" />
     <method v="2">
-      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="-DskipTests package " />
+      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="-DskipTests clean package " />
     </method>
   </configuration>
 </component>

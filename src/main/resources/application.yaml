@@ -4,7 +4,7 @@ my:
   version: 1.0.0
 spring:
   profiles:
-    active: dev
+    active: local
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:db/changelog/db.changelog-master.xml
