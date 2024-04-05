@@ -7,12 +7,11 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Table(name = "t_tag")
 @Setter
 @Getter
 public class TagEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 

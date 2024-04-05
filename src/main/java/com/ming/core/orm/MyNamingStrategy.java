@@ -16,7 +16,7 @@ public class MyNamingStrategy extends CamelCaseToUnderscoresNamingStrategy {
     @Override
     public Identifier toPhysicalTableName(Identifier logicalName, JdbcEnvironment jdbcEnvironment) {
         //统一加上t_ 和去除entity后缀
-        String tableName = "t_" + logicalName.getCanonicalName().replace("Entity", "");
+        String tableName = "t_" + logicalName.getText().replace("Entity", "");
         return super.toPhysicalTableName(Identifier.toIdentifier(tableName, logicalName.isQuoted()), jdbcEnvironment);
     }
 }
