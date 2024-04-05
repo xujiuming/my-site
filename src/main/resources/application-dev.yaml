@@ -34,9 +34,6 @@ spring:
     database: mysql
     # 关闭延迟处理
   #    open-in-view: false
-  config:
-    activate:
-      on-profile: localProd
   freemarker:
     cache: false
     expose-session-attributes: true
