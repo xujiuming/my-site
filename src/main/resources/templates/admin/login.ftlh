@@ -86,7 +86,7 @@
     </style>
 </head>
 
-<body class="center-vh" style="background-image: url(images/login-bg-4.jpg); background-size: cover;">
+<body class="center-vh" style="background-image: url(/images/login-bg-4.jpg); background-size: cover;">
 <div class="signin-box p-5 mb-0 mr-2 ml-2">
     <div class="text-center mb-3">
         <a href="index.html"> <img alt="light year admin" src="/images/logo-sidebar.png"> </a>
@@ -105,11 +105,11 @@
         <div class="mb-3 has-feedback row">
             <div class="col-7">
                 <span class="mdi mdi-check-all form-control-feedback" aria-hidden="true"></span>
-                <input type="text" name="captcha" class="form-control" placeholder="验证码" required>
+                <input type="text" name="captcha" id="captcha-id" class="form-control" placeholder="验证码" required>
             </div>
             <div class="col-5 text-right">
-                <img src="images/captcha.png" class="pull-right" id="captcha" style="cursor: pointer;"
-                     onclick="this.src=this.src+'?d='+Math.random();" title="点击刷新" alt="captcha">
+                <img src="/captcha/generator" class="pull-right" id="captcha" style="cursor: pointer;"
+                     onclick="" title="点击刷新" alt="captcha">
             </div>
         </div>
 
@@ -154,8 +154,30 @@
             $(this).addClass('was-validated');
             return false;
         }
-
+        //提前验证验证码
         var $data = $(this).serialize();
+
+        $.post("/captcha/verify", $data, function (res) {
+            if (res.code !== 0) {
+                $.notify({
+                    message: '验证码错误',
+                }, {
+                    type: 'danger',
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    z_index: 10800,
+                    delay: 1500,
+                    animate: {
+                        enter: 'animate__animated animate__fadeInUp',
+                        exit: 'animate__animated animate__fadeOutDown'
+                    }
+                });
+                $("#captcha-id").val('');
+                return false;
+            }
+        })
 
         $.post($(this).attr('action'), $data, function (res) {
             if (res.code === 0) {

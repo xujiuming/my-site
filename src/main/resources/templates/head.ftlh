@@ -6,6 +6,12 @@
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="author" content="ming"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="application/font-woff" charset="utf-8">
+    <meta http-equiv="Content-Type" content="application/font-woff2" charset="utf-8">
+    <meta http-equiv="Content-Type" content="application/x-font-ttf" charset="utf-8">
+    <meta http-equiv="Content-Type" content="application/vnd.ms-fontobject" charset="utf-8">
+    <meta http-equiv="Content-Type" content="font/opentype" charset="utf-8">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css"/>

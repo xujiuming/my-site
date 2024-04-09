@@ -1,7 +1,7 @@
-package com.ming.service.impl;
+package com.ming.service.entity.impl;
 
 import com.ming.repository.ArticleEntityRepository;
-import com.ming.service.ArticleEntityService;
+import com.ming.service.entity.ArticleEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

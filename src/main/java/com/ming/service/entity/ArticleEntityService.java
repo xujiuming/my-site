@@ -1,4 +1,4 @@
-package com.ming.service;
+package com.ming.service.entity;
 
 public interface ArticleEntityService {
 }
