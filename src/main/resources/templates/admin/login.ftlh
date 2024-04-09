@@ -109,7 +109,7 @@
             </div>
             <div class="col-5 text-right">
                 <img src="/captcha/generator" class="pull-right" id="captcha" style="cursor: pointer;"
-                     onclick="" title="点击刷新" alt="captcha">
+                     onclick="this.src=this.src+'?d='+Math.random();" title="点击刷新" alt="captcha">
             </div>
         </div>
 
@@ -156,29 +156,6 @@
         }
         //提前验证验证码
         var $data = $(this).serialize();
-
-        $.post("/captcha/verify", $data, function (res) {
-            if (res.code !== 0) {
-                $.notify({
-                    message: '验证码错误',
-                }, {
-                    type: 'danger',
-                    placement: {
-                        from: 'top',
-                        align: 'right'
-                    },
-                    z_index: 10800,
-                    delay: 1500,
-                    animate: {
-                        enter: 'animate__animated animate__fadeInUp',
-                        exit: 'animate__animated animate__fadeOutDown'
-                    }
-                });
-                $("#captcha-id").val('');
-                return false;
-            }
-        })
-
         $.post($(this).attr('action'), $data, function (res) {
             if (res.code === 0) {
                 $.notify({

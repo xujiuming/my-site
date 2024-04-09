@@ -25,8 +25,8 @@ public class AuthController {
 
     @PostMapping("/login")
     @ResponseBody
-    public JsonResult<UserInfoDTO> loginAuth(LoginAuthRequest request) {
-        return loginService.login(request);
+    public JsonResult<UserInfoDTO> loginAuth(HttpServletRequest httpServletRequest, LoginAuthRequest request) {
+        return loginService.login(httpServletRequest, request);
     }
 
     @RequestMapping("/logout")

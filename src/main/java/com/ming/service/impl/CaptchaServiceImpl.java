@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class LocalCaptchaServiceImpl implements CaptchaService {
+public class CaptchaServiceImpl implements CaptchaService {
     private static final Random RAND = new Random();
     private static final Cache<String, String> CAPTCHA_CACHE = CacheBuilder.newBuilder()
             //写入30分钟丢弃
@@ -31,7 +31,7 @@ public class LocalCaptchaServiceImpl implements CaptchaService {
 
     @Override
     public byte[] generateCaptcha(String key) throws IOException {
-        String random = String.valueOf(RAND.nextInt(100000, 999999));
+        String random = String.valueOf(RAND.nextInt(1000, 9999));
         CAPTCHA_CACHE.put(key, random);
         return GeneratorCaptchaUtils.generateCaptcha(random);
     }
