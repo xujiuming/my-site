@@ -10,11 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/js/bootstrap-multitabs/multitabs.min.css">
-    <link rel="stylesheet" type="text/css" href="/admin/style.min.css">
+    <#include "./cssInclude.ftlh"/>
 </head>
 
 <body class="lyear-index">
@@ -44,7 +40,7 @@
                                 <span>文章管理</span>
                             </a>
                             <ul class="nav nav-subnav">
-                                <li><a class="multitabs" href="lyear_layout_break_point.html">文章</a></li>
+                                <li><a class="multitabs" href="/admin/article/main">文章</a></li>
                                 <li><a class="multitabs" href="lyear_layout_containers.html">类别</a></li>
                                 <li><a class="multitabs" href="lyear_layout_grid.html">标签</a></li>
                                 <li><a class="multitabs" href="lyear_layout_grid.html">回复</a></li>
@@ -360,14 +356,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script type="text/javascript" src="/js/popper.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/perfect-scrollbar.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap-multitabs/multitabs.min.js"></script>
-<script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
-<script type="text/javascript" src="/js/index.min.js"></script>
-<script type="text/javascript" src="/admin/main.min.js"></script>
+<#include "./jsInclude.ftlh" />
 <script type="text/javascript">
     $(document).ready(function (e) {
     });
