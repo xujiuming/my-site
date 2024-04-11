@@ -7,7 +7,7 @@
     <meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
     <meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
     <meta name="author" content="yinq">
-    <title>登录 - 光年(Light Year Admin V5)后台管理系统模板</title>
+    <title>登录 - ming后台管理系统</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
@@ -174,7 +174,7 @@
                     }
                 });
                 setTimeout(function () {
-                    location.href = 'index.html';
+                    location.href = '/admin/index';
                 }, 1500);
             } else {
                 $.notify({

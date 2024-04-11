@@ -4,10 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
-    <meta name="description" content="Light Year Admin V5是一个基于Bootstrap v5.1.3的后台管理系统的HTML模板。">
-    <meta name="author" content="yinq">
-    <title>首页 - 光年(Light Year Admin V5)后台管理系统模板</title>
+    <meta name="author" content="ming">
+    <title>ming后台管理系统</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
@@ -303,10 +301,17 @@
                     <!--End 切换主题配色-->
                     <!--个人头像内容-->
                     <li class="dropdown">
-                        <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
-                            <img class="avatar-md rounded-circle" src="/images/users/avatar.jpg" alt="ming"/>
-                            <span style="margin-left: 10px;">ming</span>
-                        </a>
+                        <#if userInfo??>
+                            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
+                                <img class="avatar-md rounded-circle" src="${userInfo.avatar}" alt="ming"/>
+                                <span style="margin-left: 10px;">${userInfo.username}</span>
+                            </a>
+                        <#else>
+                            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="dropdown-toggle">
+                                <img class="avatar-md rounded-circle" src="" alt="ming"/>
+                                <span style="margin-left: 10px;">昵称异常</span>
+                            </a>
+                        </#if>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="multitabs dropdown-item" data-url="lyear_pages_profile.html"
@@ -362,6 +367,7 @@
 <script type="text/javascript" src="/js/bootstrap-multitabs/multitabs.min.js"></script>
 <script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="/js/index.min.js"></script>
+<script type="text/javascript" src="/admin/main.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function (e) {
     });

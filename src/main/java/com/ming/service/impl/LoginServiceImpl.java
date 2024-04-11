@@ -36,6 +36,8 @@ public class LoginServiceImpl implements LoginService {
         if (!userEntity.getPassword().equals(DigestUtils.md5Hex(request.getPassword()).toLowerCase())) {
             return JsonResult.error(400, "密码错误");
         }
-        return JsonResult.ok(BeanUtils.copy(userEntity, UserInfoDTO.class));
+        UserInfoDTO userInfoDTO = BeanUtils.copy(userEntity, UserInfoDTO.class);
+        httpServletRequest.getSession().setAttribute("userInfo", userInfoDTO);
+        return JsonResult.ok(userInfoDTO);
     }
 }
