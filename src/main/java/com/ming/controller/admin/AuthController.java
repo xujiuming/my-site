@@ -6,11 +6,9 @@ import com.ming.core.dto.request.LoginAuthRequest;
 import com.ming.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/admin")
 @Controller
@@ -19,7 +17,10 @@ public class AuthController {
     private final LoginService loginService;
 
     @GetMapping("/login")
-    public String login(HttpServletRequest request) {
+    public String login(HttpServletRequest request, @RequestParam String errorAuthMsg) {
+        if (StringUtils.isNotBlank(errorAuthMsg)) {
+            request.setAttribute("errorAuthMsg", "授权失效!已退出系统,请重新登录");
+        }
         return "admin/login";
     }
 

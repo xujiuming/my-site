@@ -91,6 +91,9 @@
     <div class="text-center mb-3">
         <a href="index.html"> <img alt="light year admin" src="/images/logo-sidebar.png"> </a>
     </div>
+    <#if errorAuthMsg??>
+        <h4 style="color: red">${errorAuthMsg}</h4>
+    </#if>
     <form action="#!" method="post" class="signin-form needs-validation" novalidate>
         <div class="mb-3 has-feedback">
             <span class="mdi mdi-account" aria-hidden="true"></span>
