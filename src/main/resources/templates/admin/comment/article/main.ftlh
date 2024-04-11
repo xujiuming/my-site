@@ -14,12 +14,12 @@
 
 <body>
 <div class="container-fluid">
-
     <div class="row">
-
         <div class="col-lg-12">
             <div class="card">
-                <header class="card-header"><div class="card-title">文章列表</div></header>
+                <header class="card-header">
+                    <div class="card-title">文章列表</div>
+                </header>
                 <div class="card-body">
                     <div class="card-search mb-2-5">
                         <form class="search-form" method="get" action="#!" role="form">
@@ -29,20 +29,8 @@
                                     <div class="row">
                                         <label class="col-sm-4 col-form-label"><span class="text-danger">*</span> 任务名称</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control pull-left" name="name" value="" placeholder="请输入任务名称" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <label class="col-sm-4 col-form-label"><span class="text-danger">*</span> 任务类型</label>
-                                        <div class="col-sm-8">
-                                            <select name="type" class="form-select">
-                                                <option value="1">小说</option>
-                                                <option value="2">古籍</option>
-                                                <option value="3">专辑</option>
-                                                <option value="4">自传</option>
-                                            </select>
+                                            <input type="text" class="form-control pull-left" name="name" value=""
+                                                   placeholder="请输入任务名称"/>
                                         </div>
                                     </div>
                                 </div>
@@ -70,12 +58,13 @@
                                         <label class="form-check-label" for="check-all"></label>
                                     </div>
                                 </th>
-                                <th>编号</th>
+                                <th>ID</th>
                                 <th>标题</th>
-                                <th>书籍</th>
-                                <th>作者</th>
-                                <th>阅读量</th>
+                                <th>类别</th>
+                                <th>标签</th>
                                 <th>状态</th>
+                                <th>发布时间</th>
+                                <th>修改时间</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
@@ -83,7 +72,8 @@
                             <tr>
                                 <td>
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="1" id="ids-1">
+                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="1"
+                                               id="ids-1">
                                         <label class="form-check-label" for="ids-1"></label>
                                     </div>
                                 </td>
@@ -95,188 +85,10 @@
                                 <td><font class="text-success">正常</font></td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="2" id="ids-2">
-                                        <label class="form-check-label" for="ids-2"></label>
-                                    </div>
-                                </td>
-                                <td>2</td>
-                                <td>第01章 古道腾驹惊白发，危峦快剑识青翎</td>
-                                <td>《书剑恩仇录》</td>
-                                <td>金庸</td>
-                                <td>44</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="3" id="ids-3">
-                                        <label class="form-check-label" for="ids-3"></label>
-                                    </div>
-                                </td>
-                                <td>3</td>
-                                <td>一个戴水獭皮帽子的朋友</td>
-                                <td>《湘行散记》</td>
-                                <td>沈从文</td>
-                                <td>39</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="4" id="ids-4">
-                                        <label class="form-check-label" for="ids-4"></label>
-                                    </div>
-                                </td>
-                                <td>4</td>
-                                <td>你是要灼灼容颜，还是要宜其室家</td>
-                                <td>《诗三百：思无邪》</td>
-                                <td>安意如</td>
-                                <td>36</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="5" id="ids-5">
-                                        <label class="form-check-label" for="ids-5"></label>
-                                    </div>
-                                </td>
-                                <td>5</td>
-                                <td>海上的消息</td>
-                                <td>《打开心内的窗》</td>
-                                <td>林清玄</td>
-                                <td>32</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="6" id="ids-6">
-                                        <label class="form-check-label" for="ids-6"></label>
-                                    </div>
-                                </td>
-                                <td>6</td>
-                                <td>楔子 一阕词来 南国清秋魂梦绕 十年人散 绣房红烛剑光寒</td>
-                                <td>《七剑下天山》</td>
-                                <td>梁羽生</td>
-                                <td>42</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="7" id="ids-7">
-                                        <label class="form-check-label" for="ids-7"></label>
-                                    </div>
-                                </td>
-                                <td>7</td>
-                                <td>祝福</td>
-                                <td>《彷徨》</td>
-                                <td>鲁迅</td>
-                                <td>40</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="8" id="ids-8">
-                                        <label class="form-check-label" for="ids-8"></label>
-                                    </div>
-                                </td>
-                                <td>8</td>
-                                <td>一个女长年的故事</td>
-                                <td>《莫泊桑短篇小说集》</td>
-                                <td>莫泊桑</td>
-                                <td>36</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="9" id="ids-9">
-                                        <label class="form-check-label" for="ids-9"></label>
-                                    </div>
-                                </td>
-                                <td>9</td>
-                                <td>第一回 赈民饥包公奉旨　图谋害庞相施计</td>
-                                <td>《五虎征西》</td>
-                                <td>李雨堂</td>
-                                <td>35</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="10" id="ids-10">
-                                        <label class="form-check-label" for="ids-10"></label>
-                                    </div>
-                                </td>
-                                <td>10</td>
-                                <td>第一回 于按察山东赴任　邹其仁赴路登程</td>
-                                <td>《于公案》</td>
-                                <td>佚名</td>
-                                <td>37</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i class="mdi mdi-window-close"></i></a>
+                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i
+                                                    class="mdi mdi-pencil"></i></a>
+                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i
+                                                    class="mdi mdi-window-close"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -295,7 +107,6 @@
                         <li class="page-item"><a class="page-link" href="#!">14453</a></li>
                         <li class="page-item"><a class="page-link" href="#!">下一页</a></li>
                     </ul>
-
                 </div>
             </div>
         </div>
