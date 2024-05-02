@@ -6,5 +6,5 @@ spring:
   profiles:
     active: localTest
   liquibase:
-    enabled: true
-    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: false
+#    change-log: classpath:db/changelog/db.changelog-master.xml
