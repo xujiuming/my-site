@@ -16,6 +16,13 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * liquibase 更新监听器
+ * 在spring 完全启动后 执行
+ *
+ * @author ming
+ * @date 2024-05-03 18:38:37
+ */
 @Component
 @Slf4j
 public class LiquibaseUpdateListener {

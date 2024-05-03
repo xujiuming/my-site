@@ -69,44 +69,42 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input ids" name="ids[]" value="1"
-                                               id="ids-1">
-                                        <label class="form-check-label" for="ids-1"></label>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>第01章 天涯思君不可忘</td>
-                                <td>《倚天屠龙记》</td>
-                                <td>金庸</td>
-                                <td>36</td>
-                                <td><font class="text-success">正常</font></td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="编辑"><i
-                                                    class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-default" href="#!" data-bs-toggle="tooltip" title="删除"><i
-                                                    class="mdi mdi-window-close"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <#list pageData.getContent() as item>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input ids" name="ids[]" value="1"
+                                                   id="ids-1">
+                                            <label class="form-check-label" for="ids-1"></label>
+                                        </div>
+                                    </td>
+                                    <td>${item.getId()}</td>
+                                    <td>${item.getTitle()}</td>
+                                    <td>${item.getTitle()}</td>
+                                    <td>${item.getCreateTime()}</td>
+                                    <td><font class="text-success">正常${item.getLink()}</font></td>
+                                    <td>${item.getCreateTime()}</td>
+                                    <td>${item.getLastUpdateTime()}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip"
+                                               title="编辑"><i
+                                                        class="mdi mdi-pencil"></i></a>
+                                            <a class="btn btn-default" href="#!" data-bs-toggle="tooltip"
+                                               title="删除"><i
+                                                        class="mdi mdi-window-close"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </#list>
+
                             </tbody>
                         </table>
                     </div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><span class="page-link">上一页</span></li>
-                        <li class="page-item active"><span class="page-link">1</span></li>
-                        <li class="page-item"><a class="page-link" href="#1">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#1">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#1">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#1">5</a></li>
-                        <li class="page-item disabled"><span class="page-link">...</span></li>
-                        <li class="page-item"><a class="page-link" href="#!">14452</a></li>
-                        <li class="page-item"><a class="page-link" href="#!">14453</a></li>
-                        <li class="page-item"><a class="page-link" href="#!">下一页</a></li>
-                    </ul>
+                    <#include '../../page.ftlh' />
+
+                    <@pagination totalPages=pageData.getTotalPages() currentPage=pageData.getNumber()  requestUrl="/admin/article/main" />
+
                 </div>
             </div>
         </div>
