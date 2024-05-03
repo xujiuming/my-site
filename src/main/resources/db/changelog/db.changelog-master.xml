@@ -6,7 +6,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <changeSet id="10" author="ming">
         <insert tableName="t_user">
-            <column name="id" value="1"/>
             <column name="username" value="ming"/>
             <column name="password" value="95c90aa47733b9023c318d9914606339"/>
             <column name="nick_name" value="Ming"/>

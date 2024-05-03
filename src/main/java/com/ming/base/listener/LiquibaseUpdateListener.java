@@ -10,9 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
-import java.io.StringWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 
 @Component
@@ -23,7 +24,9 @@ public class LiquibaseUpdateListener {
     private DataSource dataSource;
 
     @EventListener(ApplicationReadyEvent.class)
-    public void onApplicationReady(ApplicationReadyEvent event) throws SQLException, LiquibaseException {
+    @Transactional(rollbackFor = Exception.class)
+    @SuppressWarnings("deprecation")
+    public synchronized void onApplicationReady(ApplicationReadyEvent event) throws SQLException, LiquibaseException, IOException {
         long now = System.currentTimeMillis();
         log.info("执行数据库变更-----开始");
         // 假设你的变更日志文件在classpath的db/changelog目录下
@@ -31,12 +34,14 @@ public class LiquibaseUpdateListener {
         // 假设你的changelog文件名为changelog-master.xml
         String changeLogFile = "/db/changelog/db.changelog-master.xml";
         Liquibase liquibase = new Liquibase(changeLogFile, resourceAccessor, new JdbcConnection(dataSource.getConnection()));
-
+        liquibase.update();
         // 执行Liquibase更新
-        liquibase.update("", new StringWriter());
-
+//        StringWriter stringWriter = new StringWriter();
+//        liquibase.update(new Contexts(), new LabelExpression(), stringWriter, false);
         // 可以在这里添加额外的逻辑，比如打印日志或执行其他初始化操作
         log.info("执行数据库变更-----结束,耗时:{}ms", System.currentTimeMillis() - now);
+//        stringWriter.close();
+//        liquibase.close();
 
     }
 }
