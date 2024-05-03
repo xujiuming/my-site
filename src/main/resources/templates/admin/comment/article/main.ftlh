@@ -103,7 +103,7 @@
                     </div>
                     <#include '../../page.ftlh' />
 
-                    <@pagination totalPages=pageData.getTotalPages() currentPage=pageData.getNumber()  requestUrl="/admin/article/main" />
+                    <@pagination pageData=pageData  requestUrl="/admin/article/main" />
 
                 </div>
             </div>

@@ -17,7 +17,7 @@ public class ArticleController implements BaseController {
 
     @GetMapping("main")
     public String main(Model model) {
-        model.addAttribute("pageData", articleEntityService.page(pageable(0, 10)));
+        model.addAttribute("pageData", articleEntityService.page(pageable()));
         return "admin/comment/article/main";
     }
 }
