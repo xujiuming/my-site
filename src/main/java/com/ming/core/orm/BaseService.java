@@ -16,21 +16,16 @@ public abstract class BaseService<T extends BaseEntity, ID> {
         this.repository = repository;
     }
 
-
     public Page<T> page(Specification<T> specification, Pageable pageable) {
         return repository.findAll(specification, pageable);
     }
 
+    public List<T> findAll(Specification<T> specification) {
+        return repository.findAll(specification);
+    }
+
     public Optional<T> findById(ID id) {
         return repository.findById(id);
-    }
-
-    public List<T> findAll() {
-        return repository.findAll();
-    }
-
-    public Page<T> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -39,7 +34,8 @@ public abstract class BaseService<T extends BaseEntity, ID> {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void deleteById(ID id) {
+    public Boolean deleteById(ID id) {
         repository.deleteById(id);
+        return true;
     }
 }
