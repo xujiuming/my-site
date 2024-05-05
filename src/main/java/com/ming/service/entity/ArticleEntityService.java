@@ -1,13 +1,14 @@
 package com.ming.service.entity;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.Sets;
 import com.ming.Entity.ArticleEntity;
+import com.ming.Entity.TagEntity;
 import com.ming.core.orm.BaseRepository;
 import com.ming.core.orm.BaseService;
-import com.ming.core.utils.JsonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Set;
 
 @Service
 public class ArticleEntityService extends BaseService<ArticleEntity, Long> {
@@ -15,14 +16,33 @@ public class ArticleEntityService extends BaseService<ArticleEntity, Long> {
         super(repository);
     }
 
+    @Autowired
+    private TagEntityService tagEntityService;
+    @Autowired
+    private CategoryEntityService categoryEntityService;
+
     @Override
     public ArticleEntity saveAndFlush(ArticleEntity entity) {
-        //处理tag  和 category
-        List<String> tags = JsonUtil.readValue(entity.getTags(), new TypeReference<List<String>>() {
-        });
-        List<String> categoryList = JsonUtil.readValue(entity.getCategoryList(), new TypeReference<List<String>>() {
-        });
-
+        handlerTag(entity);
+        HandlerCategory(entity);
         return super.saveAndFlush(entity);
+    }
+
+    private void HandlerCategory(ArticleEntity entity) {
+        if (entity.getCategoryEntity().getId() == null) {
+            entity.setCategoryEntity(categoryEntityService.saveAndFlush(entity.getCategoryEntity()));
+        }
+    }
+
+    private void handlerTag(ArticleEntity entity) {
+        Set<TagEntity> tagEntitySet = Sets.newHashSet();
+        for (TagEntity tag : entity.getTagEntitySet()) {
+            if (tag.getId() != null) {
+                tagEntitySet.add(tag);
+            } else {
+                tagEntitySet.add(tagEntityService.saveAndFlush(tag));
+            }
+        }
+        entity.setTagEntitySet(tagEntitySet);
     }
 }
