@@ -2,12 +2,14 @@ package com.ming.service.entity;
 
 import com.google.common.collect.Sets;
 import com.ming.Entity.ArticleEntity;
+import com.ming.Entity.CategoryEntity;
 import com.ming.Entity.TagEntity;
 import com.ming.core.orm.BaseRepository;
 import com.ming.core.orm.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -29,16 +31,22 @@ public class ArticleEntityService extends BaseService<ArticleEntity, Long> {
     }
 
     private void HandlerCategory(ArticleEntity entity) {
-        if (entity.getCategoryEntity().getId() == null) {
-            entity.setCategoryEntity(categoryEntityService.saveAndFlush(entity.getCategoryEntity()));
+        CategoryEntity categoryEntity = entity.getCategoryEntity();
+        Optional<CategoryEntity> nameCategoryEntityOptional = categoryEntityService.findOneByName(categoryEntity.getName());
+        if (nameCategoryEntityOptional.isPresent()) {
+            entity.setCategoryEntity(nameCategoryEntityOptional.get());
+        } else {
+            categoryEntityService.saveAndFlush(categoryEntity);
+            entity.setCategoryEntity(categoryEntity);
         }
     }
 
     private void handlerTag(ArticleEntity entity) {
         Set<TagEntity> tagEntitySet = Sets.newHashSet();
         for (TagEntity tag : entity.getTagEntitySet()) {
-            if (tag.getId() != null) {
-                tagEntitySet.add(tag);
+            Optional<TagEntity> tagEntityOptional = tagEntityService.findOneByName(tag.getName());
+            if (tagEntityOptional.isPresent()) {
+                tagEntitySet.add(tagEntityOptional.get());
             } else {
                 tagEntitySet.add(tagEntityService.saveAndFlush(tag));
             }

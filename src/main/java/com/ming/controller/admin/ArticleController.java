@@ -25,7 +25,7 @@ public class ArticleController extends BaseController {
 
     @PostMapping("save")
     @ResponseBody
-    public ArticleEntity save(ArticleEntity entity) {
+    public ArticleEntity save(@RequestBody ArticleEntity entity) {
         return articleEntityService.saveAndFlush(entity);
     }
 

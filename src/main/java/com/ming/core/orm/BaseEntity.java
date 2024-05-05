@@ -21,23 +21,23 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "created_at", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    protected LocalDateTime createdAt;
+    protected LocalDateTime createTime;
 
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
-    protected LocalDateTime updatedAt;
+    protected LocalDateTime lastUpdateTime;
 
     @PrePersist
     protected void onCreate() {
-        if (createdAt == null) {
-            createdAt = LocalDateTime.now();
+        if (createTime == null) {
+            createTime = LocalDateTime.now();
         }
-        updatedAt = LocalDateTime.now();
+        lastUpdateTime = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+        lastUpdateTime = LocalDateTime.now();
     }
 
 }
