@@ -17,6 +17,12 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * jackson config
+ *
+ * @author ming
+ * @date 2024-05-05 20:03:25
+ */
 @Configuration
 public class JacksonConfig {
     @Bean
@@ -24,16 +30,12 @@ public class JacksonConfig {
         return builder -> {
             builder.featuresToEnable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             builder.simpleDateFormat(GlobalConstants.DATE_FORMAT_PATTERN);
-            //添加jackson 针对于jdk8的time包的序列化
             JavaTimeModule javaTimeModule = new JavaTimeModule();
             javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstants.LOCAL_DATE_TIME_FORMAT_PATTERN)));
             javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstants.LOCAL_DATE_TIME_FORMAT_PATTERN)));
-
             javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(GlobalConstants.LOCAL_DATE_FORMAT_PATTERN)));
-
             javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(GlobalConstants.LOCAL_TIME_FORMAT_PATTERN)));
             javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(GlobalConstants.LOCAL_TIME_FORMAT_PATTERN)));
-
             builder.modules(javaTimeModule);
         };
     }

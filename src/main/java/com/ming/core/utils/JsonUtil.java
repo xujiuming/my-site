@@ -117,10 +117,9 @@ public class JsonUtil {
      * @author ming
      * @date 2018-10-17 20:48:37
      */
-    @SuppressWarnings("unchecked")
-    public static <T> T readValue(String jsonStr, TypeReference valueTypeRef) {
+    public static <T> T readValue(String jsonStr, TypeReference<T> valueTypeRef) {
         try {
-            return (T) getInstance().readValue(jsonStr, valueTypeRef);
+            return getInstance().readValue(jsonStr, valueTypeRef);
         } catch (IOException e) {
             log.error("json字符串转化泛型对象异常:{},{},{}", jsonStr, valueTypeRef, e.getMessage());
         }
