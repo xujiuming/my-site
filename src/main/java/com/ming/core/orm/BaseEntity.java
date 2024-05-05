@@ -19,11 +19,11 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "create_time", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     protected LocalDateTime createTime;
 
-    @Column(name = "updated_at")
+    @Column(name = "last_update_time")
     @Temporal(TemporalType.TIMESTAMP)
     protected LocalDateTime lastUpdateTime;
 
