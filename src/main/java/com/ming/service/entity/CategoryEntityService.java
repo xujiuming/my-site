@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CategoryEntityService extends BaseService<CategoryEntity,Long> {
+public class CategoryEntityService extends BaseService<CategoryEntity, Long> {
     public CategoryEntityService(BaseRepository<CategoryEntity, Long> repository) {
         super(repository);
     }

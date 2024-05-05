@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class CaptchaService  {
+public class CaptchaService {
     private static final Random RAND = new Random();
     private static final Cache<String, String> CAPTCHA_CACHE = CacheBuilder.newBuilder()
             //写入30分钟丢弃

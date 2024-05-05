@@ -60,7 +60,7 @@ public class GeneratorCaptchaUtils {
             int fy = RANDOM.nextInt(HEIGHT);
             int rgb = RANDOM.nextInt(256);
             g2d.setColor(new Color(rgb, rgb, rgb));
-            g2d.fillRect(fx,fy, 1, 1);
+            g2d.fillRect(fx, fy, 1, 1);
         }
 
         // 释放资源

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class LoginService  {
+public class LoginService {
     private final UserEntityRepository userEntityRepository;
     private final CaptchaService captchaService;
 

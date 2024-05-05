@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CategoryEntityRepository extends BaseRepository<CategoryEntity,Long> {
+public interface CategoryEntityRepository extends BaseRepository<CategoryEntity, Long> {
     Optional<CategoryEntity> findOneByName(String name);
 }

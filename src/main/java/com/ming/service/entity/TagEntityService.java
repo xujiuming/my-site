@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class TagEntityService extends BaseService<TagEntity,Long> {
+public class TagEntityService extends BaseService<TagEntity, Long> {
     public TagEntityService(BaseRepository<TagEntity, Long> repository) {
         super(repository);
     }
