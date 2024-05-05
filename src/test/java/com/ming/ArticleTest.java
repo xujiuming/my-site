@@ -1,9 +1,6 @@
 package com.ming;
 
-import com.google.common.collect.Sets;
 import com.ming.Entity.ArticleEntity;
-import com.ming.Entity.CategoryEntity;
-import com.ming.Entity.TagEntity;
 import com.ming.repository.ArticleEntityRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,12 +28,6 @@ public class ArticleTest {
             entity.setCreateTime(LocalDateTime.now());
             entity.setLastUpdateTime(LocalDateTime.now());
 
-            TagEntity tagEntity = new TagEntity();
-            tagEntity.setName("tag" + i);
-            entity.setTagEntitySet(Sets.newHashSet(tagEntity));
-            CategoryEntity categoryEntity = new CategoryEntity();
-            categoryEntity.setName("category" + i);
-            entity.setCategoryEntitySet(Sets.newHashSet(categoryEntity));
             articleEntityRepository.saveAndFlush(entity);
         }
 

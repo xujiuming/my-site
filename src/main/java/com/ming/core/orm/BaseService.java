@@ -29,8 +29,8 @@ public abstract class BaseService<T extends BaseEntity, ID> {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public T save(T entity) {
-        return repository.save(entity);
+    public T saveAndFlush(T entity) {
+        return repository.saveAndFlush(entity);
     }
 
     @Transactional(rollbackFor = Exception.class)
