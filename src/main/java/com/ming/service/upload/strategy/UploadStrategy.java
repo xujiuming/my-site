@@ -4,7 +4,7 @@ import com.ming.core.dto.UploadResultDTO;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public interface UploadStrategy {
@@ -23,10 +23,12 @@ public interface UploadStrategy {
      */
     default String buildPath(String originFileName) {
         if (originFileName.startsWith("/")) {
-            return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")) + originFileName;
+            return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd/HHmmssSSS")) + originFileName;
         } else {
-            return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd/")) + originFileName;
+            return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd/HHmmssSSS/")) + originFileName;
         }
     }
+
+
 
 }
