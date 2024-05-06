@@ -29,6 +29,10 @@ public class UploadResultDTO {
      */
     private String checkCode;
     /**
+     * 文件大小
+     */
+    private Long size;
+    /**
      * 文件下载地址
      * local-需要认证校验
      * oss-需要签名cdn

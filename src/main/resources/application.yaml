@@ -15,4 +15,4 @@ spring:
 upload:
   type: local
   local:
-    path: ./upload
+    path: ./localFile/

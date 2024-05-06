@@ -4,8 +4,11 @@ import com.ming.core.dto.JsonResult;
 import com.ming.core.dto.UploadResultDTO;
 import com.ming.service.upload.UploadService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * 上传服务
@@ -14,14 +17,15 @@ import org.springframework.web.multipart.MultipartFile;
  * @author ming
  * @date 2024-05-06 10:16:29
  */
-@RequestMapping("/upload")
+@Controller
+@RequestMapping("/public/upload")
 @RequiredArgsConstructor
 public class UploadController {
 
     private final UploadService uploadService;
 
     @PostMapping
-    public UploadResultDTO upload(@RequestParam("file") MultipartFile file) {
+    public UploadResultDTO upload(@RequestParam("file") MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) {
             throw new RuntimeException("上传文件不能为空");
         }
@@ -32,7 +36,6 @@ public class UploadController {
     public JsonResult<UploadResultDTO> get(@PathVariable("id") Long id) {
         return JsonResult.ok(uploadService.findById(id));
     }
-
 
 
     @DeleteMapping("/{id}")
