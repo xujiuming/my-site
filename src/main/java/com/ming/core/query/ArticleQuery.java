@@ -1,4 +1,4 @@
-package com.ming.base.query;
+package com.ming.core.query;
 
 import com.ming.core.orm.JpaOperator;
 import com.ming.core.orm.MyJpaSpecifications;

@@ -7,3 +7,7 @@ spring:
     active: localTest
   liquibase:
     enabled: false
+  servlet:
+    multipart:
+      max-file-size: 5GB
+      max-request-size: 5GB
