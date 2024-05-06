@@ -1,10 +1,10 @@
 package com.ming.controller;
 
+import com.ming.core.dto.JsonResult;
 import com.ming.core.dto.UploadResultDTO;
 import com.ming.service.upload.UploadService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -20,7 +20,7 @@ public class UploadController {
 
     private final UploadService uploadService;
 
-    @RequestMapping
+    @PostMapping
     public UploadResultDTO upload(@RequestParam("file") MultipartFile file) {
         if (file == null || file.isEmpty()) {
             throw new RuntimeException("上传文件不能为空");
@@ -28,9 +28,16 @@ public class UploadController {
         return uploadService.upload(file);
     }
 
-    @RequestMapping("/get")
-    public UploadResultDTO get(Long id) {
-        return uploadService.findById(id);
+    @GetMapping("/{id}")
+    public JsonResult<UploadResultDTO> get(@PathVariable("id") Long id) {
+        return JsonResult.ok(uploadService.findById(id));
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public JsonResult<Boolean> delete(@PathVariable("id") Long id) {
+        return JsonResult.ok(uploadService.deleteById(id));
     }
 
 }

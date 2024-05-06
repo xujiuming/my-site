@@ -11,3 +11,8 @@ spring:
     multipart:
       max-file-size: 5GB
       max-request-size: 5GB
+# 系统文件上传服务配置
+upload:
+  type: local
+  local:
+    path: ./upload

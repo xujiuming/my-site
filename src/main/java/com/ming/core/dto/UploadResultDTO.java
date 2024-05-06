@@ -11,9 +11,12 @@ public class UploadResultDTO {
      */
     private String name;
     /***
-     * 文件url  会根据不同策略实现 返回不同  如local会返回当前存储路径下的相对路径
+     * 文件路径
+     * 会根据不同策略实现 返回不同
+     * 如local会返回当前存储路径下的相对路径
+     * oss返回objectKey
      * */
-    private String url;
+    private String path;
     /**
      * 返回文件类型
      * <p>
@@ -25,4 +28,10 @@ public class UploadResultDTO {
      * 校验码
      */
     private String checkCode;
+    /**
+     * 文件下载地址
+     * local-需要认证校验
+     * oss-需要签名cdn
+     */
+    private String downloadUrl;
 }
