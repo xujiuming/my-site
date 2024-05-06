@@ -13,13 +13,13 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class UploadInfoEntity extends BaseEntity {
-   private String name;
-   private String originalName;
-   private String url;
-   private String checkCode;
-   private Long size;
-   private String fileType;
-   private String uploadType;
+    private String name;
+    private String originalName;
+    private String url;
+    private String checkCode;
+    private Long size;
+    private String fileType;
+    private String uploadType;
 
 
 }

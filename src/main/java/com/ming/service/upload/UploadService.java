@@ -8,10 +8,9 @@ public class UploadService {
         return null;
     }
 
-    public UploadResultDTO findById(Long id){
+    public UploadResultDTO findById(Long id) {
         return null;
     }
-
 
 
 }

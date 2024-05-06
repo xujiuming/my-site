@@ -7,6 +7,7 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationEvent;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,12 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * spring 工具类
+ *
+ * @author ming
+ * @date 2024-05-06 11:53:30
+ */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class SpringUtils implements ApplicationContextAware, DisposableBean {
@@ -41,6 +48,17 @@ public class SpringUtils implements ApplicationContextAware, DisposableBean {
      * @date 2017-11-10 15:51
      */
     private static DefaultListableBeanFactory DEFAULT_LISTABLE_BEAN_FACTORY;
+
+
+    public static void publishEvent(Object event) {
+        checkApplicationContext();
+        APPLICATION_CONTEXT.publishEvent(event);
+    }
+
+    public static void publishEvent(ApplicationEvent event) {
+        checkApplicationContext();
+        APPLICATION_CONTEXT.publishEvent(event);
+    }
 
     /**
      * 获取 手动注入的 bean名称
