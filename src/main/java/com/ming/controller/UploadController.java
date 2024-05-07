@@ -1,7 +1,7 @@
 package com.ming.controller;
 
+import com.ming.Entity.UploadInfoEntity;
 import com.ming.core.dto.JsonResult;
-import com.ming.core.dto.UploadResultDTO;
 import com.ming.service.upload.UploadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,14 +18,14 @@ import java.io.IOException;
  * @date 2024-05-06 10:16:29
  */
 @Controller
-@RequestMapping("/public/upload")
+@RequestMapping("/open/upload")
 @RequiredArgsConstructor
 public class UploadController {
 
     private final UploadService uploadService;
 
     @PostMapping
-    public UploadResultDTO upload(@RequestParam("file") MultipartFile file) throws IOException {
+    public UploadInfoEntity upload(@RequestParam("file") MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) {
             throw new RuntimeException("上传文件不能为空");
         }
@@ -33,7 +33,7 @@ public class UploadController {
     }
 
     @GetMapping("/{id}")
-    public JsonResult<UploadResultDTO> get(@PathVariable("id") Long id) {
+    public JsonResult<UploadInfoEntity> get(@PathVariable("id") Long id) {
         return JsonResult.ok(uploadService.findById(id));
     }
 

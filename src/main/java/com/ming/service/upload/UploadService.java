@@ -1,7 +1,9 @@
 package com.ming.service.upload;
 
+import com.ming.Entity.UploadInfoEntity;
 import com.ming.base.config.UploadConfig;
-import com.ming.core.dto.UploadResultDTO;
+import com.ming.service.entity.UploadInfoEntityService;
+import com.ming.service.upload.strategy.UploadResultDTO;
 import com.ming.service.upload.strategy.UploadStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class UploadService {
     public Map<String, UploadStrategy> uploadStrategyMap;
     @Autowired
     private UploadConfig uploadConfig;
+    @Autowired
+    private UploadInfoEntityService uploadInfoEntityService;
 
     private UploadStrategy getStrategy() {
         if (!uploadStrategyMap.containsKey(uploadConfig.getType().getStrategyBeanName())) {
@@ -25,11 +29,20 @@ public class UploadService {
         return uploadStrategyMap.get(uploadConfig.getType().getStrategyBeanName());
     }
 
-    public UploadResultDTO upload(MultipartFile file) throws IOException {
-        return getStrategy().upload(file.getOriginalFilename(), file.getInputStream());
+    public UploadInfoEntity upload(MultipartFile file) throws IOException {
+        UploadResultDTO resultDTO = getStrategy().upload(file.getOriginalFilename(), file.getInputStream());
+        UploadInfoEntity entity = new UploadInfoEntity();
+        entity.setName(resultDTO.getName());
+        entity.setOriginalName(resultDTO.getName());
+        entity.setUrl(resultDTO.getPath());
+        entity.setCheckCode(resultDTO.getCheckCode());
+        entity.setSize(resultDTO.getSize());
+        entity.setFileType(resultDTO.getType().name());
+        entity.setUploadType(uploadConfig.getType().name());
+        return uploadInfoEntityService.saveAndFlush(entity);
     }
 
-    public UploadResultDTO findById(Long id) {
+    public UploadInfoEntity findById(Long id) {
         return null;
     }
 

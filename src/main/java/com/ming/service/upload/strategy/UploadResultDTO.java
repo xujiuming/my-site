@@ -1,10 +1,10 @@
-package com.ming.core.dto;
+package com.ming.service.upload.strategy;
 
+import com.ming.core.utils.FileTypeUtils;
 import lombok.Data;
 
 @Data
 public class UploadResultDTO {
-    private Long id;
     /**
      * 文件名
      * 会根据不同策略实现  返回不同的名字 此名字为文件服务中的文件名
@@ -23,7 +23,7 @@ public class UploadResultDTO {
      * 内部根据文件头判断  实现结果 依赖文件头的配置是否齐全
      * {@link com.ming.core.utils.FileTypeUtils}
      */
-    private String type;
+    private FileTypeUtils.FileType type;
     /**
      * 校验码
      */
@@ -32,10 +32,4 @@ public class UploadResultDTO {
      * 文件大小
      */
     private Long size;
-    /**
-     * 文件下载地址
-     * local-需要认证校验
-     * oss-需要签名cdn
-     */
-    private String downloadUrl;
 }

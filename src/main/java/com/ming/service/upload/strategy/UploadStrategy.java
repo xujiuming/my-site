@@ -1,6 +1,5 @@
 package com.ming.service.upload.strategy;
 
-import com.ming.core.dto.UploadResultDTO;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public interface UploadStrategy {
 
-    UploadResultDTO upload(String fileName, byte[] fileBytes);
+    UploadResultDTO upload(String fileName, byte[] fileBytes) throws IOException;
 
     UploadResultDTO upload(String fileName, InputStream is) throws IOException;
 

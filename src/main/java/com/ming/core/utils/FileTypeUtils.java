@@ -171,7 +171,7 @@ public class FileTypeUtils {
         PNG(Sets.newHashSet("89504E47"), Sets.newHashSet(".png"), "png格式图片,以可移植网络图形格式编码的图像"),
         JAVA_FILE(Sets.newHashSet("7061636B"), Sets.newHashSet(".java"), "java源码文件"),
         JAVA_CLASS_FILE(Sets.newHashSet("CAFEBABE"), Sets.newHashSet(".class"), "java字节码文件"),
-        ;
+        OTHER(Sets.newHashSet(), Sets.newHashSet(), "未识别类型");
         private Set<String> headerHexSet;
         private Set<String> suffixSet;
         private String desc;

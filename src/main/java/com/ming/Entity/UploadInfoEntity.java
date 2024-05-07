@@ -20,6 +20,4 @@ public class UploadInfoEntity extends BaseEntity {
     private Long size;
     private String fileType;
     private String uploadType;
-
-
 }
