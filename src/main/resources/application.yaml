@@ -16,3 +16,4 @@ upload:
   type: local
   local:
     path: ./localFile/
+    web-url-prefix: http://localhost:8080/upload/download/

@@ -31,6 +31,7 @@ public class UploadConfig {
     @Data
     public static class LocalUploadConfig {
         private String path;
+        private String webUrlPrefix;
     }
 
     @Data

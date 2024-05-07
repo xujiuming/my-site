@@ -12,7 +12,7 @@ public interface UploadStrategy {
 
     UploadResultDTO upload(String fileName, InputStream is) throws IOException;
 
-
+    String buildAccessUrl(BuildUrlDTO buildUrlDTO);
     /**
      * 构建path
      * 默认规则 就是 yyyy/MM/dd/originFileName
@@ -29,5 +29,5 @@ public interface UploadStrategy {
     }
 
 
-
+    String getPrefixPath();
 }

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.ming.base.config.UploadConfig;
 import com.ming.core.utils.FileTypeUtils;
 import com.ming.core.utils.SignatureUtils;
+import com.ming.service.upload.strategy.BuildUrlDTO;
 import com.ming.service.upload.strategy.UploadResultDTO;
 import com.ming.service.upload.strategy.UploadStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,15 @@ public class LocalUploadStrategy implements UploadStrategy {
         resultDTO.setCheckCode(SignatureUtils.md5ToHex(new FileInputStream(new File(localPath.toUri()))));
         resultDTO.setSize(size);
         return resultDTO;
+    }
+
+    @Override
+    public String buildAccessUrl(BuildUrlDTO buildUrlDTO) {
+        return getConfig().getWebUrlPrefix() + buildUrlDTO.getPath();
+    }
+
+    @Override
+    public String getPrefixPath() {
+        return getConfig().getPath();
     }
 }

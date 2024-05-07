@@ -4,6 +4,8 @@ import com.ming.Entity.UploadInfoEntity;
 import com.ming.core.dto.JsonResult;
 import com.ming.service.upload.UploadService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,4 +45,13 @@ public class UploadController {
         return JsonResult.ok(uploadService.deleteById(id));
     }
 
+    @GetMapping("/build-access-url/{id}")
+    public JsonResult<String> buildAccessUrl(@PathVariable("id") Long id) {
+        return JsonResult.ok(uploadService.buildAccessUrl(id));
+    }
+
+    @GetMapping("/download")
+    public ResponseEntity<FileSystemResource> download(@RequestParam("id")Long id) throws IOException {
+        return uploadService.download(id);
+    }
 }
