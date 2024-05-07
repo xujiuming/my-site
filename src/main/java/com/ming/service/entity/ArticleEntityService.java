@@ -45,7 +45,7 @@ public class ArticleEntityService extends BaseService<ArticleEntity, Long> {
         Set<TagEntity> tagEntitySet = Sets.newHashSet();
         for (TagEntity tag : entity.getTagEntitySet()) {
             Optional<TagEntity> tagEntityOptional = tagEntityService.findOneByName(tag.getName());
-            if (tagEntityOptional.isPresent()) {
+            if (tagEntityOptional.isEmpty()) {
                 tagEntitySet.add(tagEntityOptional.get());
             } else {
                 tagEntitySet.add(tagEntityService.saveAndFlush(tag));
