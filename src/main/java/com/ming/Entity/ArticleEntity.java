@@ -22,6 +22,7 @@ public class ArticleEntity extends BaseEntity {
     private String content;
     @Column(length = Integer.MAX_VALUE)
     private String htmlContent;
+    private String htmlCheckCode;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "article_tag",
