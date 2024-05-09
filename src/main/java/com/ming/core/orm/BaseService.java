@@ -16,6 +16,10 @@ public abstract class BaseService<T extends BaseEntity, ID> {
         this.repository = repository;
     }
 
+    public Page<T> page(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
     public Page<T> page(Specification<T> specification, Pageable pageable) {
         return repository.findAll(specification, pageable);
     }

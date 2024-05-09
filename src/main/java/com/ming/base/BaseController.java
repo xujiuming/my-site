@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 public abstract class BaseController {
     public static Pageable pageable() {
         int pageNumber = 0;
-        int pageSize = 25;
+        int pageSize = 15;
         String pageNumberStr = ServletUtils.getRequest().getParameter("page");
         if (StringUtils.isNumeric(pageNumberStr)) {
             pageNumber = Integer.parseInt(pageNumberStr);
