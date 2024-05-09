@@ -1,6 +1,7 @@
 package com.ming.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.ming.core.dto.ArticleStatusEnum;
 import com.ming.core.orm.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,6 +24,10 @@ public class ArticleEntity extends BaseEntity {
     @Column(length = Integer.MAX_VALUE)
     private String htmlContent;
     private String htmlCheckCode;
+
+    @Enumerated(EnumType.STRING)
+    private ArticleStatusEnum status;
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "article_tag",

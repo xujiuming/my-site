@@ -3,6 +3,7 @@ package com.ming;
 import com.ming.Entity.ArticleEntity;
 import com.ming.Entity.CategoryEntity;
 import com.ming.Entity.TagEntity;
+import com.ming.core.dto.ArticleStatusEnum;
 import com.ming.core.utils.SignatureUtils;
 import com.ming.service.MarkdownParseService;
 import com.ming.service.entity.ArticleEntityService;
@@ -116,6 +117,7 @@ public class ReadHexoBlogTest {
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setName(head.getCategories());
         entity.setCategoryEntity(categoryEntity);
+        entity.setStatus(ArticleStatusEnum.RELEASE);
         LocalDateTime now = LocalDateTime.parse(head.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         entity.setCreateTime(now);
         entity.setLastUpdateTime(now);
