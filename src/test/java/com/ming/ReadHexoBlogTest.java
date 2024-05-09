@@ -8,6 +8,7 @@ import com.ming.service.MarkdownParseService;
 import com.ming.service.entity.ArticleEntityService;
 import lombok.Data;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,15 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class)
+@Slf4j
 public class ReadHexoBlogTest {
     @Autowired
     private MarkdownParseService markdownParseService;
@@ -81,15 +85,21 @@ public class ReadHexoBlogTest {
         String headtString = splitStringArr[1];
         String bodyString = splitStringArr[2];
         String bodyHtmlString = markdownParseService.parseHtml(bodyString);
-        System.out.println(headtString);
-        System.out.println("-------------");
-        System.out.println(bodyString);
-        System.out.println("-------------");
-        System.out.println(bodyHtmlString);
+//        System.out.println(headtString);
+//        System.out.println("-------------");
+//        System.out.println(bodyString);
+//        System.out.println("-------------");
+//        System.out.println(bodyHtmlString);
 
-
+        log.info("解析:{}",headtString);
         Yaml yaml = new Yaml();
         Head head = yaml.loadAs(headtString, Head.class);
+        //根据htmlMd5判断是否解析过
+        if (articleEntityService.findOneByHtmlCheckCode(SignatureUtils.md5ToHex(bodyHtmlString)).isPresent()) {
+            log.info("{}已经解析过", head.getTitle());
+            return;
+        }
+
 
         ArticleEntity entity = new ArticleEntity();
         entity.setTitle(head.getTitle());
@@ -103,10 +113,12 @@ public class ReadHexoBlogTest {
                     tag.setName(m);
                     return tag;
                 }).collect(Collectors.toSet()));
-
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setName(head.getCategories());
         entity.setCategoryEntity(categoryEntity);
+        LocalDateTime now = LocalDateTime.parse(head.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        entity.setCreateTime(now);
+        entity.setLastUpdateTime(now);
         articleEntityService.saveAndFlush(entity);
     }
 

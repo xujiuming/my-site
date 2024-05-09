@@ -6,6 +6,7 @@ import com.ming.Entity.CategoryEntity;
 import com.ming.Entity.TagEntity;
 import com.ming.core.orm.BaseRepository;
 import com.ming.core.orm.BaseService;
+import com.ming.repository.ArticleEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ import java.util.Set;
 
 @Service
 public class ArticleEntityService extends BaseService<ArticleEntity, Long> {
+    @Autowired
+    private ArticleEntityRepository articleEntityRepository;
+
     public ArticleEntityService(BaseRepository<ArticleEntity, Long> repository) {
         super(repository);
     }
@@ -52,5 +56,9 @@ public class ArticleEntityService extends BaseService<ArticleEntity, Long> {
             }
         }
         entity.setTagEntitySet(tagEntitySet);
+    }
+
+    public Optional<ArticleEntity> findOneByHtmlCheckCode(String htmlCheckCode) {
+        return articleEntityRepository.findOneByHtmlCheckCode(htmlCheckCode);
     }
 }

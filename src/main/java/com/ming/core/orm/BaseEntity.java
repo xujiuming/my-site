@@ -1,14 +1,16 @@
 package com.ming.core.orm;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-@Data
+@Setter
+@Getter
 public abstract class BaseEntity implements Serializable {
 
     @Serial
