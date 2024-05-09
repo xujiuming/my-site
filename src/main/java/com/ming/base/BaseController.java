@@ -3,12 +3,29 @@ package com.ming.base;
 
 import com.ming.core.utils.ServletUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 public abstract class BaseController {
+    public static int DEFAULT_PAGE_NUMBER = 0;
+    public static int DEFAULT_PAGE_SIZE = 15;
+
+    public static Pageable pageable(int pageNumber, int pageSize, Sort sort) {
+        return PageRequest.of(pageNumber, pageSize, sort);
+    }
+
+    public static Pageable pageable(int pageNumber, int pageSize) {
+        return pageable(pageNumber, pageSize, Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    public static Pageable pageable(int pageNumber) {
+        return pageable(pageNumber, DEFAULT_PAGE_SIZE);
+    }
+
     public static Pageable pageable() {
-        int pageNumber = 0;
-        int pageSize = 15;
+        int pageNumber = DEFAULT_PAGE_NUMBER;
+        int pageSize = DEFAULT_PAGE_SIZE;
         String pageNumberStr = ServletUtils.getRequest().getParameter("page");
         if (StringUtils.isNumeric(pageNumberStr)) {
             pageNumber = Integer.parseInt(pageNumberStr);
@@ -18,6 +35,6 @@ public abstract class BaseController {
             pageSize = Integer.parseInt(pageSizeStr);
         }
         return Pageable.ofSize(pageSize).withPage(pageNumber);
-    }
 
+    }
 }
