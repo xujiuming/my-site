@@ -8,8 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 public abstract class BaseController {
-    public static int DEFAULT_PAGE_NUMBER = 0;
-    public static int DEFAULT_PAGE_SIZE = 15;
+    public static final int DEFAULT_PAGE_NUMBER = 0;
+    public static final int DEFAULT_PAGE_SIZE = 15;
+
+
+    public static Pageable pageable(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
+        return PageRequest.of(pageNumber, pageSize, direction, properties);
+    }
 
     public static Pageable pageable(int pageNumber, int pageSize, Sort sort) {
         return PageRequest.of(pageNumber, pageSize, sort);
@@ -24,6 +29,10 @@ public abstract class BaseController {
     }
 
     public static Pageable pageable() {
+        return pageable(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    public static Pageable pageable(Sort sort) {
         int pageNumber = DEFAULT_PAGE_NUMBER;
         int pageSize = DEFAULT_PAGE_SIZE;
         String pageNumberStr = ServletUtils.getRequest().getParameter("page");
@@ -34,7 +43,7 @@ public abstract class BaseController {
         if (StringUtils.isNumeric(pageSizeStr)) {
             pageSize = Integer.parseInt(pageSizeStr);
         }
-        return Pageable.ofSize(pageSize).withPage(pageNumber);
+        return pageable(pageNumber, pageSize, sort);
 
     }
 }

@@ -28,6 +28,10 @@ public abstract class BaseService<T extends BaseEntity, ID> {
         return repository.findAll(specification);
     }
 
+    public List<T> findAll() {
+        return repository.findAll();
+    }
+
     public Optional<T> findById(ID id) {
         return repository.findById(id);
     }

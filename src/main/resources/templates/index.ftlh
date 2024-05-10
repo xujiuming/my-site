@@ -23,6 +23,13 @@
                                             <a href="#">${tags.name}</a>
                                         </#list>
                                     </li>
+                                    <li>
+                                        <i class="mdi mdi-tag-text-outline">
+                                            <#if article.categoryEntity??>
+                                                <a href="#">${article.categoryEntity.name}</a>
+                                            </#if>
+                                        </i>
+                                    </li>
                                     <li><i class="mdi mdi-comment-multiple-outline"></i> <a href="#">3 评论</a></li>
                                 </ul>
                             </div>
@@ -65,12 +72,11 @@
 
                         <!-- 归档 -->
                         <aside class="widget">
-                            <div class="widget-title">归档</div>
+                            <div class="widget-title">分类</div>
                             <ul>
-                                <li><a href="#">2019 三月</a> (40)</li>
-                                <li><a href="#">2019 四月</a> (08)</li>
-                                <li><a href="#">2019 五月</a> (11)</li>
-                                <li><a href="#">2019 六月</a> (21)</li>
+                                <#list categoryList as item>
+                                    <li><a href="#">${item.name}</a>${item.articleEntitySet?size}</li>
+                                </#list>
                             </ul>
                         </aside>
 
@@ -78,12 +84,9 @@
                         <aside class="widget widget-tag-cloud">
                             <div class="widget-title">标签</div>
                             <div class="tag-cloud">
-                                <a href="#" class="badge badge-light">php</a>
-                                <a href="#" class="badge badge-primary">苹果</a>
-                                <a href="#" class="badge badge-danger">比特币</a>
-                                <a href="#" class="badge badge-light">linux</a>
-                                <a href="#" class="badge badge-light">前端</a>
-                                <a href="#" class="badge badge-light">vue</a>
+                                <#list tagList as item>
+                                    <a href="#" class="badge badge-light">${item.name}</a>
+                                </#list>
                             </div>
                         </aside>
                     </div>
