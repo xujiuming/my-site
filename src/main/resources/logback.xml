@@ -15,10 +15,10 @@
         <file>${LOG_HOME}/application.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 每天晚上（假设时区为UTC+8，即北京时间）归档 -->
-            <fileNamePattern>${LOG_HOME}/application.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/application.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 每天凌晨0点触发归档 -->
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>10GB</maxFileSize>
                 <!-- UTC时间，确保在每天0点触发 -->
                 <resetTime>00:00</resetTime>
             </timeBasedFileNamingAndTriggeringPolicy>
