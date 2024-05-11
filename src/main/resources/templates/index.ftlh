@@ -15,7 +15,7 @@
                         <article class="lyear-arc">
                             <div class="arc-header">
                                 <h2 class="arc-title"><a
-                                            href="${article.link}">${article.title}</a></h2>
+                                            href="/ming/${article.link}.html">${article.title}</a></h2>
                                 <ul class="arc-meta">
                                     <li><i class="mdi mdi-calendar"></i>${article.lastUpdateTime}</li>
                                     <li><i class="mdi mdi-tag-text-outline"></i>

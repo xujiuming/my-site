@@ -14,28 +14,38 @@
                 <div class="col-xl-8">
                     <article class="lyear-arc">
                         <div class="arc-header">
-                            <h2 class="arc-title"><a href="#">平头哥发布含光 800：高性能 AI 推理芯片</a></h2>
+                            <h2 class="arc-title"><a href="#">${article.title}</a></h2>
                             <ul class="arc-meta">
-                                <li><i class="mdi mdi-calendar"></i> 2019-09-25 09:21</li>
-                                <li><i class="mdi mdi-tag-text-outline"></i> <a href="#">AI</a>, <a href="#">芯片</a></li>
-                                <li><i class="mdi mdi-comment-multiple-outline"></i> <a href="#">3 评论</a></li>
+                                <li><i class="mdi mdi-calendar"></i> ${article.lastUpdateTime}</li>
+                                <li><i class="mdi mdi-tag-text-outline"></i>
+                                    <#list article.tagEntitySet as tags>
+                                        <a href="#">${tags.name}</a>
+                                    </#list>
+                                </li>
+                                <li>
+                                    <i class="mdi mdi-tag-text-outline">
+                                        <#if article.categoryEntity??>
+                                            <a href="#">${article.categoryEntity.name}</a>
+                                        </#if>
+                                    </i>
+                                </li>
                             </ul>
                         </div>
 
                         <div class="arc-preview">
-                            <img src="images/blog/post-1.png" alt="" class="img-fluid rounded" />
+                            <img src="images/blog/post-1.png" alt="" class="img-fluid rounded"/>
                         </div>
 
                         <div class="lyear-arc-detail">
-<#--                            ${content}-->
-
+                            <#--                            ${content}-->
+                            ${article.htmlContent}
 
                             <div class="mt-5">
                                 <h6>Tags:</h6>
                                 <div class="tag-cloud">
-                                    <a href="#" class="badge badge-light">logo</a>
-                                    <a href="#" class="badge badge-light">AI</a>
-                                    <a href="#" class="badge badge-light">芯片</a>
+                                    <#list article.tagEntitySet as tags>
+                                        <a href="#">${tags.name}</a>
+                                    </#list>
                                 </div>
                             </div>
 
@@ -64,26 +74,6 @@
                                     <span>2019-09-25 09:35</span>
                                 </li>
                             </ul>
-                        </aside>
-
-                        <!-- 归档 -->
-                        <aside class="widget">
-                            <div class="widget-title">分类</div>
-                            <ul>
-                                <#list categoryList as item>
-                                    <li><a href="#">${item.name}</a>${item.articleEntitySet?size}</li>
-                                </#list>
-                            </ul>
-                        </aside>
-
-                        <!-- 标签 -->
-                        <aside class="widget widget-tag-cloud">
-                            <div class="widget-title">标签</div>
-                            <div class="tag-cloud">
-                                <#list tagList as item>
-                                    <a href="#" class="badge badge-light">${item.name}</a>
-                                </#list>
-                            </div>
                         </aside>
                     </div>
                 </div>

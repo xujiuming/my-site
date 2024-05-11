@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -23,10 +24,15 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = {"", "/", "index", "/index.html", "/index.htm"})
     public String index(Model model) {
-
         model.addAttribute("articlePage", articleEntityService.page(pageable(Sort.by(Sort.Direction.DESC, "lastUpdateTime"))));
         model.addAttribute("categoryList", categoryEntityService.findAll());
         model.addAttribute("tagList", tagEntityService.findAll());
         return "index";
+    }
+
+    @RequestMapping("/ming/{link}")
+    public String details(@PathVariable String link, Model model) {
+        model.addAttribute("article", articleEntityService.findOneByLink(link.replace(".html", "")).orElseThrow());
+        return "details";
     }
 }

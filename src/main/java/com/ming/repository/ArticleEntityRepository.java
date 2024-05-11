@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface ArticleEntityRepository extends BaseRepository<ArticleEntity, Long> {
     Optional<ArticleEntity> findOneByHtmlCheckCode(String htmlCheckCode);
+
+    Optional<ArticleEntity> findOneByLink(String link);
 }

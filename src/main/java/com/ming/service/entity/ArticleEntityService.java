@@ -61,4 +61,8 @@ public class ArticleEntityService extends BaseService<ArticleEntity, Long> {
     public Optional<ArticleEntity> findOneByHtmlCheckCode(String htmlCheckCode) {
         return articleEntityRepository.findOneByHtmlCheckCode(htmlCheckCode);
     }
+
+    public Optional<ArticleEntity> findOneByLink(String link) {
+        return articleEntityRepository.findOneByLink(link);
+    }
 }
