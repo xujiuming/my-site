@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css"/>
     <link rel="stylesheet" type="text/css" href="/blog/style.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/pico.css" />
     <!-- 可选：引入自定义样式 -->
     <style>
         .navbar-brand-img {

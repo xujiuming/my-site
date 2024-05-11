@@ -38,7 +38,9 @@
 
                         <div class="lyear-arc-detail">
                             <#--                            ${content}-->
-                            ${article.htmlContent}
+                            <#noautoesc >
+                                ${article.htmlContent}
+                            </#noautoesc>
 
                             <div class="mt-5">
                                 <h6>Tags:</h6>
