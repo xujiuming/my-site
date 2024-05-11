@@ -12,6 +12,11 @@ spring:
       pool-name: hikari
       minimum-idle: 20
       maximum-pool-size: 200
+      idle-timeout: 60000
+      connection-test-query: "select 1"
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      auto-commit: true
   jpa:
     generate-ddl: true
     show-sql: true
@@ -37,7 +42,7 @@ spring:
     # 关闭延迟处理
   #    open-in-view: false
   freemarker:
-    cache: false
+    cache: falsef
     expose-session-attributes: true
     expose-request-attributes: true
     expose-spring-macro-helpers: true
