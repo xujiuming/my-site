@@ -9,6 +9,8 @@
     <section class="mt-5 pb-5">
         <div class="container ">
             <div class="row">
+<#--                <style scoped>@import '/pico.css';-->
+<#--                </style>-->
                 <!-- 文章列表 -->
                 <!-- 文章阅读 -->
                 <div class="col-xl-8">
