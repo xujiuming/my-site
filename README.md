@@ -1,2 +1,2 @@
 # my-site
-6
+blog https://gitee.com/yinqi/Light-Year-Blog
