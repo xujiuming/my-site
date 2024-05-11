@@ -74,8 +74,8 @@
                         <aside class="widget">
                             <div class="widget-title">分类</div>
                             <ul>
-                                <#list categoryList as item>
-                                    <li><a href="#">${item.name}</a>${item.articleEntitySet?size}</li>
+                                <#list categoryDtoList as item>
+                                    <li><a href="#">${item.name}</a>${item.count}</li>
                                 </#list>
                             </ul>
                         </aside>
@@ -84,7 +84,7 @@
                         <aside class="widget widget-tag-cloud">
                             <div class="widget-title">标签</div>
                             <div class="tag-cloud">
-                                <#list tagList as item>
+                                <#list tagDtoList as item>
                                     <a href="#" class="badge badge-light">${item.name}</a>
                                 </#list>
                             </div>

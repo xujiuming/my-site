@@ -1,6 +1,7 @@
 package com.ming.service.entity;
 
 import com.ming.Entity.TagEntity;
+import com.ming.core.dto.TagIndexDTO;
 import com.ming.core.orm.BaseRepository;
 import com.ming.core.orm.BaseService;
 import com.ming.repository.TagEntityRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class TagEntityService extends BaseService<TagEntity, Long> {
@@ -20,5 +22,9 @@ public class TagEntityService extends BaseService<TagEntity, Long> {
 
     public Optional<TagEntity> findOneByName(String name) {
         return tagEntityRepository.findOneByName(name);
+    }
+
+    public Set<TagIndexDTO> findTagIndexDTO() {
+        return tagEntityRepository.findTagIndexDTO();
     }
 }

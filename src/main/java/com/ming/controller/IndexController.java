@@ -25,8 +25,8 @@ public class IndexController extends BaseController {
     @RequestMapping(value = {"", "/", "index", "/index.html", "/index.htm"})
     public String index(Model model) {
         model.addAttribute("articlePage", articleEntityService.page(pageable(Sort.by(Sort.Direction.DESC, "lastUpdateTime"))));
-        model.addAttribute("categoryList", categoryEntityService.findAll());
-        model.addAttribute("tagList", tagEntityService.findAll());
+        model.addAttribute("categoryDtoList", categoryEntityService.findCategoryIndexDTO());
+        model.addAttribute("tagDtoList", tagEntityService.findTagIndexDTO());
         return "index";
     }
 
